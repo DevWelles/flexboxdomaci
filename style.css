@@ -10,29 +10,26 @@ body {
 header {
   border: 5px dashed rgb(35, 165, 159);
   display: flex;
-  justify-content: space-around; /*zašto mi justify-content prestane raditi nakon svakom child elmentu odredim flex property na svaki child element? */
+  justify-content: space-around;
   align-items: center;
-  gap: 30px;
   height: 100px;
-  padding: 0 10px; /*da odmaknem child elemente od ruba pošto mi neradi justify concent*/
   margin: 0px 15px;
 }
 
 .logo {
   border: 4px solid black;
   font-size: 35px;
-  /* flex-grow: 1; */
-  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 5px 0px; /*je li bolje u ovom slučaju povećati element sa paddingom ili sa heightom?*/
+  flex-basis: 18%;
+  height: 70%;
 }
 
 .primaryNav {
   border: 5px solid green;
-  /* flex-grow: 3; */
-  flex: 3;
+  flex-basis: 60%;
+  height: 70%;
 }
 
 .primaryNav > ul {
@@ -40,30 +37,39 @@ header {
   list-style-type: none;
   justify-content: space-around;
   align-items: center;
-  padding: 5px 0px;
+  height: 100%;
 }
 
 .primaryNav a {
   background-color: black;
   color: white;
   text-decoration: none;
-  padding: 10px 20px;
+  width: 15%;
+  text-align: center;
+  line-height: 100%;
+
+  /*načini centriranja teksta unutar a elementa*/
+  /* 1.način*/
+  height: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /*2.način*/
+  /* padding: 10px 0px; */
+
+  /*3.način*/
+  /* height: 40px;
+  text-align: center;
+  line-height: 40px; */
 }
 
 .search {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
-  /* flex-grow: 1; */ /*zašto ovdje ako stavim flex grow 1 bude mi veće od diva Logo? što nebi trebalo biti podjednako?
-                      A ako nestavim ništa onda bude skoro pa podjednako..  
-                      Htio bi to napraviti samo sa flexboxom bez dodavanja paddinga ili margina ili bez setanja fiksne 
-                      veličine diva... 
-  /* flex-shrink: 1; */ /*ovo ne igra nikakvu ulogu */
-  flex: 1; /*na kraju mi najbolje igra ulogu kad raspišem samo u ovom shorthandu u postotcima ili samo brojem
-             ali onda je to flex basis ako je u postotcima odnosno flex grow ako je samo broj hmm
-            ugl ovako bude dobra raspodjela child elemenata u header,
-             a preko flex-grow propertya nebude. Zašto?*/
-  padding: 5px 0px;
+  flex-basis: 18%;
+  height: 70%;
 }
 
 .search label {
@@ -71,57 +77,61 @@ header {
   flex: 100%; /*dobijem istu funckionalnost jer kad u flex stavim % ona ga računa kao flex basis */
   /*a kad stavim unitless number onda računa da je to flex grow... valjda
               tako bar piše na MDN haha ljepote CSS-a */
+  flex-basis: 100%; /*možda najbolje ovako stavit jer je najčitljivije*/
 }
 
 .input {
   /* flex-grow: 1; */
   flex: 1;
+
+  /*2. način*/
+  flex-basis: 65%; /*i onda na ovaj drugi element .submit stavim 35% da zajedno zauzmu 100%*/
 }
 
 .submit {
   /* flex-grow: 2; */
   flex: 2; /*slična stvar i sa ova 2 elementa, zašto bde različito sa flex-grow od samog flex propertya?*/
+  flex-basis: 35%;
 }
 
 .mainFlex {
   border: 4px dashed rgb(180, 180, 34);
   display: flex;
-  justify-content: space-around; /*ovo mi opet ne reagira kad sam na svaki child element stavio flex property*/
-  gap: 30px;
+  justify-content: space-around;
   margin: 15px 15px;
-  padding: 0px 10px; /*ova tri propertya sam stavio jednaka kao i na header da se poravnaju child elementi*/
-  /*međutim vidim da nisu baš skroz jednako raspodjeljeni neznam zašto, vjerojatno zbog paddinga*/
-  /*da sam stavio cijelu stranicu i jedan div pa napravio sa grid layoutom ili flexbox
-      layoutom sa wrap elements mozda bi bilo bolje, ali htio sam ovako sa 2 odvojena flexboxa*/
 }
 
 .secondaryNav {
-  flex: 1;
   border: 5px solid green;
   background-color: lightgray;
+  flex-basis: 18%;
 }
 
 .secondaryNav > ul {
   display: flex;
-  height: 100%;
   list-style-type: none;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  height: 100%;
 }
 
 .secondaryNav a {
   background-color: white;
   color: black;
   text-decoration: none;
-  padding: 40px 60px;
   font-size: 20px;
+  height: 10%;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 main {
-  flex: 3;
   border: 5px dashed purple;
   padding: 10px;
+  flex-basis: 60%;
 }
 
 main article {
@@ -140,7 +150,7 @@ main p {
   font-size: 20px;
 }
 aside {
-  flex: 1;
+  flex-basis: 18%;
   border: 5px solid lightgreen;
   background-color: lightgray;
   display: flex;
